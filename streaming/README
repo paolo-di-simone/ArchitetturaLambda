@@ -1,0 +1,7 @@
+
+- analisi1.py: conta il numero di pacchetti per ogni ip sorgente in una data finestra temporale
+- analisi2.py: conta il numero di pacchetti per ogni ip destinazione in una data finestra temporale
+- analisi3.py: conta il numero di pacchetti sniffati in una data finestra temporale
+- analisi4.py: conta il numero di pacchetti in una determinata finestra temporale per ogni tipo di request HTTP
+- analisi5.py: conta il numero di pacchetti in una determinata finestra temporale per ogni codice di response HTTP
+- analisi6.py: conta il numero di nuove connessioni per ogni coppia di IP
