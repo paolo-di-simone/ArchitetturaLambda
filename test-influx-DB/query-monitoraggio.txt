@@ -1,0 +1,110 @@
+# Numero di connessioni fra coppie di IP
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_connections")
+  
+  
+# Connessioni totali instaurate
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_connections")
+  |> sum(column: "_value")
+  
+
+# Carico macchina
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets")
+
+
+# Carico macchina
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets")
+  |> sum(column: "_value")
+  
+
+# Numero di pacchetti per ogni IP sorgente
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_ip_src")
+
+
+# Pacchetti totali processati per ogni IP sorgente
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_ip_src")
+  |> group(columns: ["ip_src"])
+  |> sum(column: "_value")
+  
+
+# Numero di pacchetti per ogni IP destinazione
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_ip_dst")
+ 
+
+# Pacchetti totali processati per ogni IP destinazione 
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_ip_dst")
+  |> group(columns: ["ip_dst"])
+  |> sum(column: "_value")
+  
+
+# Numero di pacchetti per ogni tipo di codice di risposta HTTP
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_http_response_code")
+
+
+# Numero pacchetti con error code 503
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_http_response_code" and r["response_code"] == "503")
+  |> sum(column: "_value")
+
+
+# Numero pacchetti con error code 503
+from(bucket: "bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "packet")
+  |> filter(fn: (r) => r["_field"] == "n_packets_by_http_request_type")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
